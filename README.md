@@ -6,7 +6,7 @@ It scrapes data from Cricinfo to get list of live matches and displays live scor
 The script is made using python 2.7
 
 ### List of libraries used:
-* BeautifulSoup4
+* bs4 (BeautifulSoup)
 * requests
 * time
 * sys
