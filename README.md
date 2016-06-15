@@ -8,8 +8,6 @@ The script is made using python 2.7
 ### List of libraries used:
 * bs4 (BeautifulSoup)
 * requests
-* time
-* sys
 
 ### Testing
 The program is successfully tested in Windows 8.
