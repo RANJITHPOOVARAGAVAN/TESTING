@@ -89,7 +89,7 @@ def GetMessage(score):
     return score
         
 
-def Main():
+def main():
     
     print 'LIVE CRICKET MATCHES:\n'
     
@@ -116,17 +116,19 @@ def Main():
         else:
             break
     
-    url = GetUrl(inp)
-    req = requests.get(url)
-    soup = BeautifulSoup(req.text,'lxml')
+    url_inp = GetUrl(inp)
+    
     
     while True:
         try:
-            req.raise_for_status()
+            req_inp = requests.get(url_inp)
+            soup_inp = BeautifulSoup(req_inp.text,'lxml')            
             
-            status = GetStatus(soup)
-            team1 = GetTeam(soup, '1')
-            team2 = GetTeam(soup, '2')
+            req_inp.raise_for_status()
+            
+            status = GetStatus(soup_inp)
+            team1 = GetTeam(soup_inp, '1')
+            team2 = GetTeam(soup_inp, '2')
             title = team1 + ' v ' + team2        
                        
             if pre_match in status : 
@@ -134,7 +136,7 @@ def Main():
                 WindowsBalloonTip(title, status)
                 sleep(120)
             else:
-                score = soup.findAll('title')
+                score = soup_inp.findAll('title')
                 message = GetMessage(score[0].text)
                 PrintMessage(title, message + "\n" + "-"*len(message))
                 WindowsBalloonTip(title, message)
@@ -148,6 +150,6 @@ def Main():
 
 
 if __name__=='__main__':
-    Main()
+    main()
 
 
